@@ -1,0 +1,4 @@
+python-telegram-bot==21.6
+pymongo==4.8.0
+dnspython==2.6.1
+bson==0.5.10
