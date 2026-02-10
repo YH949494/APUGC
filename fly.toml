@@ -1,20 +1,23 @@
-app = "your-ugc-bot-app"
-primary_region = "sin"
+# fly.toml app configuration file generated for apugc on 2026-02-10T04:14:17Z
+#
+# See https://fly.io/docs/reference/configuration/ for information about how to use this file.
+#
+
+app = 'apugc'
+primary_region = 'sin'
 
 [build]
-  dockerfile = "Dockerfile"
 
-[env]
-  MONGO_DB = "ap"
-  UGC_CODE_COLLECTION = "ugc_codes"
-  UGC_SUBMISSIONS_COLLECTION = "ugc_submissions"
-  REWARD_LEDGER_COLLECTION = "reward_ledger"
-  MAX_SUBMISSIONS_PER_DAY = "20"
-
-[processes]
-  app = "python main.py"
+[http_service]
+  internal_port = 8080
+  force_https = true
+  auto_stop_machines = 'stop'
+  auto_start_machines = true
+  min_machines_running = 0
+  processes = ['app']
 
 [[vm]]
-  cpu_kind = "shared"
+  memory = '1gb'
+  cpu_kind = 'shared'
   cpus = 1
   memory_mb = 256
