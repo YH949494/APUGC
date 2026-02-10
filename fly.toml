@@ -1,0 +1,20 @@
+app = "your-ugc-bot-app"
+primary_region = "sin"
+
+[build]
+  dockerfile = "Dockerfile"
+
+[env]
+  MONGO_DB = "ap"
+  UGC_CODE_COLLECTION = "ugc_codes"
+  UGC_SUBMISSIONS_COLLECTION = "ugc_submissions"
+  REWARD_LEDGER_COLLECTION = "reward_ledger"
+  MAX_SUBMISSIONS_PER_DAY = "20"
+
+[processes]
+  app = "python main.py"
+
+[[vm]]
+  cpu_kind = "shared"
+  cpus = 1
+  memory_mb = 256
